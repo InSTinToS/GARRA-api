@@ -15,6 +15,8 @@ class CreateUserService {
   ) {}
 
   execute = async data => {
+    if (!data.full_name) throw new AppError('Need the full_name', 400)
+
     const foundByEmail = await this.usersRepository.findByEmail(data.email)
 
     if (foundByEmail) throw new AppError('E-mail already exists', 400)

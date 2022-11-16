@@ -8,7 +8,7 @@ class UsersRepository implements IUsersRepository {
     const updateQuery = (name: string, value: string) =>
       `
         UPDATE
-          "User"
+          "user"
         SET
           "${name}" = '${value}'
         WHERE
@@ -41,7 +41,7 @@ class UsersRepository implements IUsersRepository {
     full_name
   }) => {
     const queryData = `
-      INSERT INTO "User" (
+      INSERT INTO "user" (
         "id",
         "email",
         "password",
@@ -64,13 +64,13 @@ class UsersRepository implements IUsersRepository {
   }
 
   delete: IUsersRepository['delete'] = async id => {
-    const queryData = `DELETE FROM "User" WHERE "id"='${id}';`
+    const queryData = `DELETE FROM "user" WHERE "id"='${id}';`
 
     await query(queryData)
   }
 
   findAll: IUsersRepository['findAll'] = async () => {
-    const queryData = 'SELECT * FROM "User";'
+    const queryData = 'SELECT * FROM "user";'
 
     const allUsers = (await query<UserModel>(queryData)).rows
 
@@ -78,7 +78,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   findById: IUsersRepository['findById'] = async id => {
-    const queryData = `SELECT * FROM "User" WHERE "id"='${id}';`
+    const queryData = `SELECT * FROM "user" WHERE "id"='${id}';`
 
     const foundUser = (await query<UserModel>(queryData)).rows[0]
 
@@ -86,7 +86,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   findByEmail: IUsersRepository['findByEmail'] = async email => {
-    const queryData = `SELECT * FROM "User" WHERE lower("email")='${email.toLowerCase()}';`
+    const queryData = `SELECT * FROM "user" WHERE lower("email")='${email.toLowerCase()}';`
 
     const foundUser = (await query<UserModel>(queryData)).rows[0]
 

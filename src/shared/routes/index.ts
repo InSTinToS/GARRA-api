@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import 'express-async-errors'
 
+import { adminsRoutes } from './admins.routes'
 import { authRoutes } from './auth.routes'
 import { usersRoutes } from './users.routes'
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(usersRoutes)
+app.use(adminsRoutes)
 
 app.use('/auth', authRoutes)
 
