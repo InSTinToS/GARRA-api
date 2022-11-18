@@ -1,11 +1,13 @@
 CREATE TABLE IF NOT EXISTS "product" (
   "id"          VARCHAR(255)  PRIMARY KEY,
-
-  "name"        VARCHAR(255)  NOT NULL,
   "created_by"  VARCHAR(255)  NOT NULL,
-  "sector_id"   VARCHAR(255)  NOT NULL,
-  "created_at"  VARCHAR(255)  NOT NULL,
-  "updated_at"  VARCHAR(255)  NOT NULL,
+
+  "quantity"    INT           NOT NULL,
+  "barcode"     VARCHAR(255)  NOT NULL UNIQUE,
+  "name"        VARCHAR(255)  NOT NULL UNIQUE,
+
+  "updated_at"  TIMESTAMP NOT NULL,
+  "created_at"  TIMESTAMP NOT NULL,
 
   CONSTRAINT "fk_product_admin"
   FOREIGN KEY ("created_by")
