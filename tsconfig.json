@@ -1,15 +1,10 @@
 {
-  "include": [
-    "./src/**/*",
-    "./src/docs/swagger.yml",
-    "./submodules/common/**/*",
-    "../common/src"
-  ],
+  "include": ["./src/**/*"],
   "compilerOptions": {
     "target": "es2018",
     "composite": true,
     "outDir": "./dist",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "module": "commonjs",
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
@@ -18,12 +13,11 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@docs/*": ["docs/*"],
-      "@types/*": ["types/*"],
-      "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
-      "@modules/*": ["modules/*"],
-      "@common/*": ["../submodules/common/src/*"]
+      "@docs/*": ["./src/docs/*"],
+      "@types/*": ["./src/types/*"],
+      "@config/*": ["./src/config/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@modules/*": ["./src/modules/*"]
     }
   }
 }

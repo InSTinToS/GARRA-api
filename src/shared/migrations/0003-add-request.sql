@@ -1,3 +1,5 @@
+--migration
+--changeset create table
 CREATE TABLE IF NOT EXISTS "request" (
   "id"      VARCHAR(255)  PRIMARY KEY,
   "user_id" VARCHAR(255)  NOT NULL,

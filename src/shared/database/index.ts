@@ -1,5 +1,7 @@
 import { Pool } from 'pg'
 
+console.log(process.env.DB_USER, process.env.DB_NAME, process.env.DB_HOST)
+
 const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

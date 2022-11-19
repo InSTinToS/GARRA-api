@@ -1,9 +1,12 @@
 import 'dotenv/config'
 import 'reflect-metadata'
+import { replaceTscAliasPaths } from 'tsc-alias'
 
-import '@shared/containers'
-import { app } from '@shared/routes'
+import './shared/containers/index'
+import { app } from './shared/routes/index'
 
-const port = process.env.API_PORT || 3001
+replaceTscAliasPaths()
+
+const port = process.env.PORT || 3001
 
 app.listen(port, () => console.log(`Running at ${port}`))

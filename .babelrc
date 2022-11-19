@@ -8,13 +8,13 @@
       "module-resolver",
       {
         "cwd": "babelrc",
+        "root": ["."],
         "alias": {
-          "@docs": ["./src/docs"],
-          "@types": ["./src/types"],
-          "@config": ["./src/config"],
-          "@shared": ["./src/shared"],
-          "@common": ["../common/src"],
-          "@modules": ["./src/modules"]
+          "@docs": ["docs"],
+          "@types": ["types"],
+          "@config": ["config"],
+          "@shared": ["shared"],
+          "@modules": ["modules"]
         }
       }
     ],

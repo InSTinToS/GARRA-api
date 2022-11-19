@@ -1,3 +1,5 @@
+--migration
+--changeset create table
 CREATE TABLE IF NOT EXISTS "admin" (
   "user_id"    VARCHAR(255) PRIMARY KEY,
 

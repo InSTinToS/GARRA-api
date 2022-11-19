@@ -1,3 +1,5 @@
+--migration
+--changeset create table
 CREATE TABLE IF NOT EXISTS "product" (
   "id"          VARCHAR(255)  PRIMARY KEY,
   "created_by"  VARCHAR(255)  NOT NULL,
