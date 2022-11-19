@@ -19,31 +19,30 @@ export class CreateRelationService {
     private requestsRepository: IRequestsRepository
   ) {}
 
+  private subtractQuantity = async (id, repository, name) => {
+    const value = await repository.findById(id)
+
+    if (!value) throw new AppError(`${name} does not exist`)
+
+    const newQuantity = value.quantity - 1
+
+    if (newQuantity < 0) throw new AppError(`Not has enough ${name}s`)
+
+    await repository.update({ id: value.id, quantity: newQuantity })
+  }
+
   execute = async data => {
-    const product = await this.productsRepository.findById(data.product_id)
+    await this.subtractQuantity(
+      data.product_id,
+      this.productsRepository,
+      'product'
+    )
 
-    if (!product) throw new AppError('Product does not exist')
-
-    const request = await this.requestsRepository.findById(data.request_id)
-
-    if (!request) throw new AppError('Request does not exist')
-
-    const newProductQuantity = product.quantity - 1
-
-    if (newProductQuantity >= 0) {
-      await this.productsRepository.update({
-        id: product.id,
-        quantity: newProductQuantity
-      })
-    }
-
-    const newRequestQuantity = request.quantity - 1
-
-    if (newRequestQuantity >= 0)
-      await this.requestsRepository.update({
-        id: request.id,
-        quantity: newRequestQuantity
-      })
+    await this.subtractQuantity(
+      data.request_id,
+      this.requestsRepository,
+      'request'
+    )
 
     const newRelation = new RelationModel()
 

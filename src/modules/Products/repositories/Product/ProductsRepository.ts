@@ -57,8 +57,6 @@ export class ProductsRepository implements IProductsRepository {
   }
 
   update: IProductsRepository['update'] = async dataToUpdate => {
-    console.log(generateUpdateSetFields({ ...dataToUpdate, id: undefined }))
-
     const queryData = `
         UPDATE
           "product"

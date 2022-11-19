@@ -6,8 +6,6 @@ export class CreateRelationController {
   handle = async (req, res) => {
     const createRelationService = container.resolve(CreateRelationService)
 
-    console.log(res.locals.user.id)
-
     const dataToCreate = { ...req.body, related_by: res.locals.user.id }
 
     const response = await createRelationService.execute(dataToCreate)

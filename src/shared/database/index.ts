@@ -1,11 +1,12 @@
 import { Pool } from 'pg'
 
 const pool = new Pool({
-  host: 'garra-database',
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: Number(process.env.DB_PORT)
+  port: Number(process.env.DB_PORT),
+  ssl: { rejectUnauthorized: false }
 })
 
 const query = async <T>(text: string) => pool.query<T>(text)
