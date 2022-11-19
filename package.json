@@ -12,7 +12,7 @@
     "docker:prod": "yarn cd",
     "docker:prune": "docker-compose down && docker system prune -a -f --volumes",
     "migrate": "dotenv -- cross-var \"pg-migrations apply -D ./src/shared/migrations/ -c %DATABASE_URL%\"",
-    "build": "tsc",
+    "build": "npx tsc",
     "dev": "ts-node-dev --poll --respawn -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "npm install && npm run build && npx ts-node-dev --poll --respawn -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules dist/src/server.js"
   },
