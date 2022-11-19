@@ -14,7 +14,7 @@
     "migrate": "dotenv -- cross-var \"pg-migrations apply -D ./src/shared/migrations/ -c %DATABASE_URL%\"",
     "build": "tsc",
     "dev": "ts-node-dev --poll --respawn -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "npm install && ts-node-dev --poll --respawn -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules dist/server.js"
+    "start": "npm install && npx ts-node-dev --poll --respawn -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules dist/server.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
